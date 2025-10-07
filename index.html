@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheBlock · Teoría de Conjuntos Interactiva</title>
+    <meta name="description" content="Plataforma educativa interactiva para aprender y practicar teoría de conjuntos con diagramas de Venn animados, explicaciones paso a paso y ejercicios personalizables.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script defer src="assets/js/main.js"></script>
+</head>
+<body data-theme="retro-light" class="content-preload">
+    <div class="splash-screen" id="splashScreen" role="dialog" aria-modal="true" aria-label="Bienvenida a TheBlock" tabindex="-1">
+        <div class="splash-content">
+            <div class="splash-logo" aria-hidden="true">
+                <div class="splash-block"></div>
+                <div class="splash-title-group">
+                    <span class="splash-title">TheBlock</span>
+                    <span class="splash-subtitle">Teoría de Conjuntos</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="app-header">
+        <div class="brand">
+            <div class="block-logo" aria-hidden="true"></div>
+            <div class="brand-text">
+                <span class="brand-title">TheBlock</span>
+                <span class="brand-subtitle">Teoría de Conjuntos</span>
+            </div>
+        </div>
+        <nav class="primary-nav" aria-label="Secciones principales">
+            <button class="nav-link" data-target="aprende">Pizarras</button>
+            <button class="nav-link" data-target="practica">Practica</button>
+            <button class="nav-link" data-target="gamifica">Trofeos</button>
+        </nav>
+        <div class="header-actions">
+            <div class="scoreboard" aria-live="polite">
+                <span class="score-label">Racha</span>
+                <span class="score-value" id="streakCounter">0</span>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Cambiar modo de color">
+                <span class="toggle-icon" aria-hidden="true"></span>
+                <span class="toggle-text">Modo</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="hero">
+            <div class="hero-content">
+                <h1>Domina la teoría de conjuntos.</h1>
+                <p>Explora tips de estudio sobre teoría de conjuntos, experimenta con diagramas de Venn animados y resuelve ejercicios que se adaptan a tu ritmo. TheBlock te acompaña paso a paso para que cada concepto quede claro.</p>
+                <div class="hero-actions">
+                    <button class="cta-button" data-target="aprende">Pizarras de conceptos</button>
+                    <button class="secondary-button" data-target="practica">Ir a la práctica</button>
+                </div>
+            </div>
+            <div class="hero-visual" role="presentation">
+                <svg viewBox="0 0 220 160" class="hero-venn" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="gradA" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="var(--accent-a)" stop-opacity="0.85"></stop>
+                            <stop offset="100%" stop-color="var(--accent-a)" stop-opacity="0.2"></stop>
+                        </linearGradient>
+                        <linearGradient id="gradB" x1="100%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="var(--accent-b)" stop-opacity="0.85"></stop>
+                            <stop offset="100%" stop-color="var(--accent-b)" stop-opacity="0.2"></stop>
+                        </linearGradient>
+                    </defs>
+                    <circle cx="90" cy="80" r="60" fill="url(#gradA)"></circle>
+                    <circle cx="130" cy="80" r="60" fill="url(#gradB)"></circle>
+                    <text x="72" y="78" class="hero-set-label">A</text>
+                    <text x="148" y="78" class="hero-set-label">B</text>
+                </svg>
+                <div class="hero-caption"></div>
+            </div>
+        </section>
+
+        <section class="module-panel" id="aprende" aria-labelledby="aprende-heading">
+            <div class="section-header">
+                <div>
+                    <h2 id="aprende-heading">Pizarras de conceptos</h2>
+                    <p class="section-subtitle">Un vistazo exprés a los conceptos clave de la teoría de conjuntos para consultar antes de practicar.</p>
+                </div>
+            </div>
+            <div class="reference-grid" aria-label="Tarjetas de referencia rápida">
+                <article class="reference-card">
+                    <h3>Tipos de conjuntos</h3>
+                    <ul>
+                        <li><strong>Finito:</strong> número limitado de elementos.</li>
+                        <li><strong>Infinito:</strong> nunca termina (ej. ℕ).</li>
+                        <li><strong>Vacío (∅):</strong> sin elementos.</li>
+                        <li><strong>Universal (U):</strong> contexto completo.</li>
+                    </ul>
+                </article>
+                <article class="reference-card">
+                    <h3>Operaciones básicas</h3>
+                    <ul>
+                        <li><strong>Unión (∪):</strong> todo lo que está en A o B.</li>
+                        <li><strong>Intersección (∩):</strong> lo que comparten A y B.</li>
+                        <li><strong>Diferencia (∖):</strong> solo lo exclusivo de A.</li>
+                        <li><strong>Diferencia Δ:</strong> exclusivos de cada conjunto.</li>
+                    </ul>
+                </article>
+                <article class="reference-card">
+                    <h3>Relaciones importantes</h3>
+                    <ul>
+                        <li><strong>Pertenencia (∈):</strong> elemento dentro del conjunto.</li>
+                        <li><strong>Contención (⊂):</strong> A cabe por completo en B.</li>
+                        <li><strong>Igualdad (=):</strong> mismos elementos, sin importar orden.</li>
+                        <li><strong>Complemento (′):</strong> lo que falta respecto a U.</li>
+                    </ul>
+                </article>
+                <article class="reference-card">
+                    <h3>Tips visuales</h3>
+                    <ul>
+                        <li>Colorea primero el universo y luego borra lo que no pertenece.</li>
+                        <li>Para Δ piensa en una “V” sin la intersección.</li>
+                        <li>Esboza símbolos antes de responder para fijar la lógica.</li>
+                        <li>Verifica si el resultado puede ser el conjunto vacío.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="module-panel" id="practica" aria-labelledby="practica-heading">
+            <div class="section-header">
+                <div>
+                    <h2 id="practica-heading">Practica con simulaciones vivas</h2>
+                    <p class="section-subtitle">Configura tus retos, responde a tu manera y recibe una guía visual paso a paso.</p>
+                </div>
+                <div class="practice-scoreboard" aria-live="polite">
+                    <span id="xpCounter">0 XP</span>
+                    <span id="badgeCounter" class="badge-chip">Sin insignias</span>
+                </div>
+            </div>
+            <div class="practice-layout">
+                <aside class="practice-config" aria-label="Generador de ejercicios">
+                    <form id="exerciseForm">
+                        <fieldset>
+                            <legend>Operaciones</legend>
+                            <label><input type="checkbox" name="operations" value="union" checked> Unión (∪)</label>
+                            <label><input type="checkbox" name="operations" value="intersection" checked> Intersección (∩)</label>
+                            <label><input type="checkbox" name="operations" value="difference"> Diferencia (∖)</label>
+                            <label><input type="checkbox" name="operations" value="symmetricDifference"> Diferencia simétrica (Δ)</label>
+                            <label><input type="checkbox" name="operations" value="complement"> Complemento (')</label>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Número de conjuntos</legend>
+                            <label><input type="radio" name="setCount" value="2" checked> 2 conjuntos</label>
+                            <label><input type="radio" name="setCount" value="3"> 3 conjuntos</label>
+                            <label><input type="radio" name="setCount" value="4"> 4 conjuntos</label>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Nivel de dificultad</legend>
+                            <label><input type="radio" name="difficulty" value="beginner" checked> Principiante</label>
+                            <label><input type="radio" name="difficulty" value="intermediate"> Intermedio</label>
+                            <label><input type="radio" name="difficulty" value="advanced"> Avanzado</label>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Modo de respuesta</legend>
+                            <label><input type="radio" name="responseMode" value="multipleChoice" checked> Opción múltiple</label>
+                            <label><input type="radio" name="responseMode" value="fillSet"> Completar conjunto</label>
+                        </fieldset>
+                        <button type="submit" class="cta-button">Generar ejercicio</button>
+                        <p class="form-notice" id="configNotice" role="alert" hidden></p>
+                    </form>
+                    <div class="practice-tips">
+                        <h4>Pistas tácticas</h4>
+                        <ul>
+                            <li>Explora la pestaña de lecciones antes de subir de nivel.</li>
+                            <li>Alterna entre completar conjuntos y opción múltiple para variar el desafío.</li>
+                            <li>Gana rachas para desbloquear insignias retro.</li>
+                        </ul>
+                    </div>
+                </aside>
+                <article class="practice-stage" aria-live="polite">
+                    <div class="exercise-meta" id="exerciseMeta"></div>
+                    <div class="exercise-statement" id="exercisePrompt">Configura tu reto y genera un ejercicio para comenzar.</div>
+                    <div class="venn-stage large" id="practiceVenn" role="img" aria-label="Diagrama interactivo del ejercicio"></div>
+                    <form id="responseForm" class="response-area" hidden></form>
+                    <div id="srFeedback" class="sr-only" aria-live="assertive"></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="module-panel" id="gamifica" aria-labelledby="gamifica-heading">
+            <div class="section-header">
+                <div>
+                    <h2 id="gamifica-heading">Impulsa tu progreso</h2>
+                    <p class="section-subtitle">Gana XP, desbloquea insignias y sigue tus avances como en un arcade educativo.</p>
+                </div>
+            </div>
+            <div class="gamify-layout">
+                <div class="xp-timeline">
+                    <h3>Ruta de progreso</h3>
+                    <ul id="xpTimeline">
+                        <li data-xp="0">Novato de Nodos · 0 XP</li>
+                        <li data-xp="150">Explorador de Conjuntos · 150 XP</li>
+                        <li data-xp="400">Arquitecto de Venn · 400 XP</li>
+                        <li data-xp="800">Maestro de Operaciones · 800 XP</li>
+                        <li data-xp="1300">Leyenda de TheBlock · 1300 XP</li>
+                    </ul>
+                </div>
+                <div class="badge-wall">
+                    <h3>Pared de insignias</h3>
+                    <div id="badgeWall" class="badge-grid" aria-live="polite"></div>
+                </div>
+                <div class="session-journal">
+                    <h3>Diario de aprendizaje</h3>
+                    <ul id="journalEntries" class="journal-list"></ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal-overlay hidden" id="resultModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose" aria-label="Cerrar ventana de resultado">
+                <span aria-hidden="true">✕</span>
+            </button>
+            <div class="modal-header">
+                <div class="modal-status-icon" id="modalStatusIcon" aria-hidden="true">✦</div>
+                <div>
+                    <h3 id="modalTitle">Resultado del intento</h3>
+                    <p id="modalSubtitle">Repasemos lo que ocurrió en este ejercicio.</p>
+                </div>
+            </div>
+            <div class="modal-body">
+                <section class="modal-feedback" id="modalFeedback"></section>
+                <section class="modal-steps">
+                    <h4>Guía paso a paso</h4>
+                    <ol id="modalSteps"></ol>
+                </section>
+                <section class="modal-visual">
+                    <h4>Diagrama de Venn</h4>
+                    <div id="modalDiagram" class="modal-diagram" role="img" aria-label="Resultado del ejercicio representado en un diagrama de Venn"></div>
+                </section>
+            </div>
+            <div class="modal-footer">
+                <button class="secondary-button" id="modalContinue">Entendido</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay hidden" id="alertModal" role="alertdialog" aria-modal="true" aria-labelledby="alertTitle" hidden>
+        <div class="modal-content modal-content--compact">
+            <button class="modal-close" id="alertClose" aria-label="Cerrar aviso">
+                <span aria-hidden="true">✕</span>
+            </button>
+            <div class="modal-header">
+                <div class="modal-status-icon modal-alert-icon" aria-hidden="true">!</div>
+                <div>
+                    <h3 id="alertTitle">Ajusta tu selección</h3>
+                    <p id="alertMessage">Selecciona al menos otra operación además de complemento.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="secondary-button" id="alertAcknowledge">Entendido</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="app-footer">
+        <p>Desarrollado por Evan Alberto Aguilar Garcia, estudiante de Front-end Masters.</p>
+        <nav aria-label="Recursos">
+            <a href="#aprende">pizarras de conceptos</a>
+            <a href="#practica">Simulador</a>
+            <a href="#gamifica">trofeos</a>
+        </nav>
+    </footer>
+</body>
+</html>
