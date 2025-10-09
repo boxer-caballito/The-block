@@ -36,12 +36,6 @@ Start-Process "http://localhost:5500/index.html"; npx serve .
 - `assets/css/styles.css`: Estilos, temas claro/oscuro y microinteracciones.
 - `assets/js/main.js`: Datos de lecciones, generador de ejercicios, motor de pasos y gamificación.
 
-## 📌 Próximos pasos sugeridos
-
-- Añadir más lecciones (por ejemplo, particiones, conjuntos potencia, leyes de De Morgan).
-- Guardar el progreso en almacenamiento persistente o sincronizado.
-- Exportar ejercicios y reportes para docentes.
-- Incorporar accesibilidad adicional (navegación por teclado detallada en diagramas).
 
 TheBlock está listo para acompañarte en cada bloque del aprendizaje de conjuntos. ¡Disfruta el viaje! 
 
@@ -83,11 +77,3 @@ Start-Process "http://localhost:5500/index.html"; npx serve .
 - `assets/css/styles.css`: Estilos, temas claro/oscuro y microinteracciones.
 - `assets/js/main.js`: Datos de lecciones, generador de ejercicios, motor de pasos y gamificación.
 
-## 📌 Próximos pasos sugeridos
-
-- Añadir más lecciones (por ejemplo, particiones, conjuntos potencia, leyes de De Morgan).
-- Guardar el progreso en almacenamiento persistente o sincronizado.
-- Exportar ejercicios y reportes para docentes.
-- Incorporar accesibilidad adicional (navegación por teclado detallada en diagramas).
-
-TheBlock está listo para acompañarte en cada bloque del aprendizaje de conjuntos. ¡Disfruta el viaje! 
