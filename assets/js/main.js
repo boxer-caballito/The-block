@@ -147,6 +147,12 @@ const responseModeLabels = {
     diagram: 'Diagrama'
 };
 
+const difficultyLabels = {
+    beginner: 'Principiante',
+    intermediate: 'Intermedio',
+    advanced: 'Avanzado'
+};
+
 const vennConfigs = {
     base: {
         2: {
@@ -975,8 +981,10 @@ function renderExercise(exercise) {
         srFeedback.textContent = '';
     }
 
+    const difficultyLabel = difficultyLabels[exercise.config.difficulty] || exercise.config.difficulty;
+
     meta.innerHTML = `
-        <span>${exercise.config.difficulty.toUpperCase()}</span>
+        <span>${String(difficultyLabel).toUpperCase()}</span>
         <span>${exercise.config.setCount} conjuntos</span>
         <span>${responseModeLabels[exercise.config.responseMode]}</span>
         <span>${new Intl.DateTimeFormat('es-ES', { hour: '2-digit', minute: '2-digit' }).format(exercise.timestamp)}</span>
@@ -1362,9 +1370,11 @@ function renderJournal() {
     state.journal.forEach(entry => {
         const li = document.createElement('li');
         const time = new Intl.DateTimeFormat('es-ES', { hour: '2-digit', minute: '2-digit' }).format(entry.timestamp);
+        const modeLabel = responseModeLabels[entry.mode] || (entry.mode === 'badge' ? 'Insignia' : entry.mode === 'note' ? 'Nota' : 'Actividad');
+        const difficultyLabel = difficultyLabels[entry.difficulty] || (entry.difficulty === '-' ? '—' : entry.difficulty);
         li.innerHTML = `
             <strong>${entry.correct ? '✔️ Acierto' : '✖️ Revisión'}</strong> — ${entry.prompt}
-            <br><small>${time} · ${responseModeLabels[entry.mode]} · ${entry.difficulty}</small>
+            <br><small>${time} · ${modeLabel} · ${difficultyLabel}</small>
         `;
         journal.appendChild(li);
     });
